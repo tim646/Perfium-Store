@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.forms import AuthenticationForm
-from django.urls import path
+from django.urls import include, path
 
 from core.schema import swagger_urlpatterns
 
@@ -31,7 +31,7 @@ admin.site.login_template = "admin_login/login.html"
 urlpatterns = [
     path("api/v1/sentry/TriggerError", trigger_error),
     path("admin/", admin.site.urls),
-    # path("api/v1/users/", include("apps.users.urls")),
+    path("api/v1/", include("apps.v1")),
 ]
 
 urlpatterns += swagger_urlpatterns
